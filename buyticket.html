@@ -52,7 +52,6 @@
                             <i class="fa fa-shopping-cart"></i> Корзина
                         </a>
                         <div class="dropdown-menu" aria-labelledby="cartDropdown">
-                            <!-- Пример элемента корзины. Вы можете добавить больше, используя такую же структуру. -->
                             <a class="dropdown-item" href="#">Товар 1</a>
                             <a class="dropdown-item" href="#">Товар 2</a>
                             <div class="dropdown-divider"></div>
@@ -114,7 +113,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    // Генерация мест в зале (например, 10x10)
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 10; j++) {
             const seat = document.createElement('div');
@@ -143,7 +141,6 @@
                 seatsArray.push([seat.getAttribute('data-row'), seat.getAttribute('data-col')]);
             });
             alert(`Выбранные места: ${JSON.stringify(seatsArray)}`);
-            // Теперь можно добавить выбранные места в корзину или выполнить другие действия.
         } else {
             alert('Пожалуйста, выберите хотя бы одно место.');
         }
@@ -151,7 +148,6 @@
         const selectedSeats = document.querySelectorAll('.seat.selected');
         const cartDropdownMenu = document.querySelector('.dropdown-menu');
 
-        // Очищаем предыдущие места в корзине
         while (cartDropdownMenu.firstChild) {
             cartDropdownMenu.removeChild(cartDropdownMenu.firstChild);
         }
@@ -163,7 +159,6 @@
                 const col = seat.getAttribute('data-col');
                 seatsArray.push([row, col]);
 
-                // Добавляем место в выпадающее меню корзины
                 const cartItem = document.createElement('a');
                 cartItem.classList.add('dropdown-item');
                 cartItem.href = "#";
@@ -171,7 +166,6 @@
                 cartDropdownMenu.appendChild(cartItem);
             });
 
-            // Добавляем разделитель и кнопку для оформления заказа
             const divider = document.createElement('div');
             divider.classList.add('dropdown-divider');
             cartDropdownMenu.appendChild(divider);
