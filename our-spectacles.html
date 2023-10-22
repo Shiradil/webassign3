@@ -22,19 +22,30 @@
     }
 
     @media (max-width: 768px) {
+        .slider-container {
+            width: 90%;
+        }
+
         .slider-button {
-            font-size: 18px;
-            padding: 8px;
+            font-size: 24px;
+            top: 45%;
         }
     }
 
-    @media (max-width: 576px) {
-        .slider-button {
-            font-size: 14px;
-            padding: 5px;
+
+    @media (max-width: 480px) {
+        .slider-container {
+            width: 100%;
         }
-        h1 {
-            font-size: 24px;
+
+        .slider-button {
+            font-size: 18px;
+            top: 45%;
+        }
+
+        #sliderImage {
+            max-width: 100%;
+            height: auto;
         }
     }
 
