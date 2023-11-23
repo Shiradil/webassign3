@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
     <title>Sticky Footer Navbar Template for Bootstrap</title>
 
@@ -71,22 +72,144 @@
                           <a class="nav-link disabled" href="our-spectacles.html">Наши поставноки</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="buyticket.html">Администрирование</a>
+                          <a class="nav-link" href="contact.html">Контакты</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="buyticket.html">Купить билет</a>
+                      </li>
+                      <!-- Кнопка для открытия модального окна -->
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+                          Регистрация
+                      </button>
+
+                      <!-- Модальное окно -->
+                      <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="registerModalLabel">Регистрация</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <!-- Форма регистрации -->
+                                      <form id="registrationForm">
+                                          <div class="form-group">
+                                              <label for="username">Имя пользователя</label>
+                                              <input type="text" class="form-control" id="username" required>
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="password">Пароль</label>
+                                              <input type="password" class="form-control" id="password" required>
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="passwordConfirm">Подтверждение пароля</label>
+                                              <input type="password" class="form-control" id="passwordConfirm" required>
+                                          </div>
+                                          <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Кнопка войти -->
+                      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#loginModal" id="loginBtn">
+                          Войти
+                      </button>
+                      <!-- Модальное окно для входа -->
+                      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <!-- Форма входа -->
+                                      <form id="loginForm">
+                                          <div class="form-group">
+                                              <label for="loginUsername">Имя пользователя</label>
+                                              <input type="text" class="form-control" id="loginUsername" required>
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="loginPassword">Пароль</label>
+                                              <input type="password" class="form-control" id="loginPassword" required>
+                                          </div>
+                                          <button type="submit" class="btn btn-secondary">Войти</button>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" class="btn btn-secondary" style="display: none;" id="logoutBtn">
+                          Выйти
+                      </button>
                   </ul>
+                  <!-- Ссылка на корзину -->
                   <ul class="navbar-nav">
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="cartDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="nav-link" href="#" id="cartDropdown" role="button" data-toggle="modal" data-target="#cartModal">
                               <i class="fa fa-shopping-cart"></i> Корзина
                           </a>
-                          <div class="dropdown-menu" aria-labelledby="cartDropdown">
-                              <a class="dropdown-item" href="#">Товар 1</a>
-                              <a class="dropdown-item" href="#">Товар 2</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Оформить заказ</a>
-                          </div>
                       </li>
                   </ul>
+
+                  <!-- Модальное окно корзины -->
+                  <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="cartModalLabel">Ваша корзина</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                                  <div id="cartContents">
+                                      <p>Корзина пуста</p>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#checkoutModal">Оформить заказ</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Модальное окно оформления заказа -->
+                  <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="checkoutModalLabel">Оформление заказа</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                                  <form id="paymentForm">
+                                      <div class="form-group">
+                                          <label for="cardNumber">Номер карты</label>
+                                          <input type="text" class="form-control" id="cardNumber" placeholder="Номер карты" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="cardDate">Дата окончания действия</label>
+                                          <input type="text" class="form-control" id="cardDate" placeholder="MM/YY" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="cardCVC">CVC код</label>
+                                          <input type="text" class="form-control" id="cardCVC" placeholder="CVC" required>
+                                      </div>
+                                      <button type="submit" class="btn btn-success">Подтвердить заказ</button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
               </div>
           </nav>
       </div>
@@ -143,5 +266,6 @@
       </div>
   </footer>
   <script type="text/javascript" src="admin.js"></script>
+  <script src="script.js"></script>
   </body>
 </html>

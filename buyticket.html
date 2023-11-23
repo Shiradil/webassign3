@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бронирование билетов</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
     <style>
         .seat {
             width: 40px;
@@ -22,32 +24,166 @@
 </head>
 <body>
 <header class="mw-100">
-      <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#"><img class="img-fluid" src="img/logo.png" style="height: 90px;"></a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active">
-                          <a class="nav-link " href="index.html">Главная<span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link " href="about.html">О театре</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link " href="our-spectacles.html">Наши поставноки</a>
-                      </li>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img class="img-fluid" src="img/logo.png" style="height: 90px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Главная<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">О театре</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="our-spectacles.html">Наши поставноки</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="buyticket.html">Купить билет</a>
+                    </li>
+                    <!-- Кнопка для открытия модального окна -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+                        Регистрация
+                    </button>
 
-                      <li class="nav-item">
-                          <a class="nav-link" href="admin.html">Администрирование</a>
-                      </li>
-                  </ul>
-              </div>
-          </nav>
-      </div>
-  </header>
+                    <!-- Модальное окно -->
+                    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="registerModalLabel">Регистрация</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Форма регистрации -->
+                                    <form id="registrationForm">
+                                        <div class="form-group">
+                                            <label for="username">Имя пользователя</label>
+                                            <input type="text" class="form-control" id="username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Пароль</label>
+                                            <input type="password" class="form-control" id="password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passwordConfirm">Подтверждение пароля</label>
+                                            <input type="password" class="form-control" id="passwordConfirm" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Кнопка войти -->
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#loginModal" id="loginBtn">
+                        Войти
+                    </button>
+                    <!-- Модальное окно для входа -->
+                    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Форма входа -->
+                                    <form id="loginForm">
+                                        <div class="form-group">
+                                            <label for="loginUsername">Имя пользователя</label>
+                                            <input type="text" class="form-control" id="loginUsername" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="loginPassword">Пароль</label>
+                                            <input type="password" class="form-control" id="loginPassword" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary">Войти</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" style="display: none;" id="logoutBtn">
+                        Выйти
+                    </button>
+                </ul>
+                <!-- Ссылка на корзину -->
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="cartDropdown" role="button" data-toggle="modal" data-target="#cartModal">
+                            <i class="fa fa-shopping-cart"></i> Корзина
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Модальное окно корзины -->
+                <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cartModalLabel">Ваша корзина</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="cartContents">
+                                    <p>Корзина пуста</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#checkoutModal">Оформить заказ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Модальное окно оформления заказа -->
+                <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="checkoutModalLabel">Оформление заказа</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="paymentForm">
+                                    <div class="form-group">
+                                        <label for="cardNumber">Номер карты</label>
+                                        <input type="text" class="form-control" id="cardNumber" placeholder="Номер карты" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardDate">Дата окончания действия</label>
+                                        <input type="text" class="form-control" id="cardDate" placeholder="MM/YY" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardCVC">CVC код</label>
+                                        <input type="text" class="form-control" id="cardCVC" placeholder="CVC" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Подтвердить заказ</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+</header>
 <div class="container mt-5">
     <h2>Выберите места:</h2>
     <div id="seatingArea">
@@ -135,7 +271,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
 
-    
+
 
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 10; j++) {
@@ -158,36 +294,36 @@
 
     // Обработка заказа
     document.getElementById('buyButton').addEventListener('click', () => {
-    const selectedSeats = document.querySelectorAll('.seat.selected');
-    const selectedSeatsText = document.getElementById('selectedSeats');
-    let seatsText = 'Выбранные места: ';
+        const selectedSeats = document.querySelectorAll('.seat.selected');
+        const selectedSeatsText = document.getElementById('selectedSeats');
+        let seatsText = 'Выбранные места: ';
 
-    if (selectedSeats.length) {
-        let seatsArray = [];
-        selectedSeats.forEach(seat => {
-            const row = seat.getAttribute('data-row');
-            const col = seat.getAttribute('data-col');
-            seatsArray.push(`Ряд ${row}, Место ${col}`);
-        });
-        seatsText += seatsArray.join(', ');
-        selectedSeatsText.textContent = seatsText;
-        $('#purchaseModal').modal('show');
-    } else {
-        alert('Пожалуйста, выберите хотя бы одно место.');
-    }
-});
+        if (selectedSeats.length) {
+            let seatsArray = [];
+            selectedSeats.forEach(seat => {
+                const row = seat.getAttribute('data-row');
+                const col = seat.getAttribute('data-col');
+                seatsArray.push(`Ряд ${row}, Место ${col}`);
+            });
+            seatsText += seatsArray.join(', ');
+            selectedSeatsText.textContent = seatsText;
+            $('#purchaseModal').modal('show');
+        } else {
+            alert('Пожалуйста, выберите хотя бы одно место.');
+        }
+    });
 
-document.getElementById('confirmPurchase').addEventListener('click', () => {
-    const cardNumber = document.getElementById('cardNumber').value;
-    const cardExpiration = document.getElementById('cardExpiration').value;
-    const cardCVC = document.getElementById('cardCVC').value;
+    document.getElementById('confirmPurchase').addEventListener('click', () => {
+        const cardNumber = document.getElementById('cardNumber').value;
+        const cardExpiration = document.getElementById('cardExpiration').value;
+        const cardCVC = document.getElementById('cardCVC').value;
 
-    // Here, add your logic to validate and process the card details
-    // For example, you can alert the user or send the data to a server
+        // Here, add your logic to validate and process the card details
+        // For example, you can alert the user or send the data to a server
 
-    alert('Покупка подтверждена: ' + cardNumber + ', ' + cardExpiration + ', ' + cardCVC);
-    $('#purchaseModal').modal('hide');
-});
+        alert('Покупка подтверждена: ' + cardNumber + ', ' + cardExpiration + ', ' + cardCVC);
+        $('#purchaseModal').modal('hide');
+    });
 
 </script>
 </body>
