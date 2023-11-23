@@ -110,7 +110,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-secondary">Войти</button>
                                     </form>
-                                </div>
+                                </div>  <button type="button" class="btn btn-primary" id="confirmPurchase">Подтвердить покупку</button>
                             </div>
                         </div>
                     </div>
@@ -189,6 +189,8 @@
     <div id="seatingArea">
         <!-- Места будут генерироваться здесь -->
     </div>
+    <button class="btn btn-primary mt-4" id="addToCartButton">Добавить в корзину</button>
+
     <button class="btn btn-primary mt-4" id="buyButton">Купить</button>
 </div>
 
@@ -265,7 +267,29 @@
 </footer>
 
 
+<script>
+document.getElementById('addToCartButton').addEventListener('click', () => {
+    const selectedSeats = document.querySelectorAll('.seat.selected');
+    const cartContents = document.getElementById('cartContents');
 
+    if (selectedSeats.length) {
+        let seatsArray = [];
+        selectedSeats.forEach(seat => {
+            const row = seat.getAttribute('data-row');
+            const col = seat.getAttribute('data-col');
+            seatsArray.push(`Ряд ${row}, Место ${col}`);
+            seat.classList.remove('selected'); // Optional: Deselect the seat after adding to cart
+        });
+
+        // Update the cart contents
+        cartContents.innerHTML = `Выбранные места: ${seatsArray.join(', ')}`;
+        $('#cartModal').modal('show'); // Show the cart modal
+
+    } else {
+        alert('Пожалуйста, выберите хотя бы одно место.');
+    }
+});
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
