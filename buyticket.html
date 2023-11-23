@@ -110,7 +110,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-secondary">Войти</button>
                                     </form>
-                                </div>  <button type="button" class="btn btn-primary" id="confirmPurchase">Подтвердить покупку</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,6 @@
     <div id="seatingArea">
         <!-- Места будут генерироваться здесь -->
     </div>
-    <button class="btn btn-primary mt-4" id="addToCartButton">Добавить в корзину</button>
     <button class="btn btn-primary mt-4" id="buyButton">Купить</button>
 </div>
 
@@ -220,8 +219,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button><button onclick="addToCart('EventID', quantityValue, ticketTypeValue)">Add to Cart</button>
-
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                 <button type="button" class="btn btn-primary" id="confirmPurchase">Подтвердить покупку</button>
             </div>
         </div>
@@ -267,49 +265,7 @@
 </footer>
 
 
-<script>
-  
-// Function to update the cart contents
-function updateCartContents() {
-    const cartContents = document.getElementById('cartContents');
-    const storedSeats = JSON.parse(localStorage.getItem('cartSeats')) || [];
 
-    if (storedSeats.length) {
-        cartContents.innerHTML = `Выбранные места: ${storedSeats.join(', ')}`;
-        $('#cartModal').modal('show'); // Show the cart modal
-    }
-}
-
-// Add click event listener to the "Add to Cart" button
-document.getElementById('addToCartButton').addEventListener('click', () => {
-    const selectedSeats = document.querySelectorAll('.seat.selected');
-    const cartContents = document.getElementById('cartContents');
-
-    if (selectedSeats.length) {
-        let seatsArray = [];
-        selectedSeats.forEach(seat => {
-            const row = seat.getAttribute('data-row');
-            const col = seat.getAttribute('data-col');
-            seatsArray.push(`Ряд ${row}, Место ${col}`);
-            seat.classList.remove('selected'); // Optional: Deselect the seat after adding to cart
-        });
-
-        // Update the cart contents in local storage
-        const storedSeats = JSON.parse(localStorage.getItem('cartSeats')) || [];
-        localStorage.setItem('cartSeats', JSON.stringify([...storedSeats, ...seatsArray]));
-
-        // Update the cart contents on the page
-        updateCartContents();
-    } else {
-        alert('Пожалуйста, выберите хотя бы одно место.');
-    }
-});
-
-// Call the updateCartContents function on page load
-updateCartContents();
-
-
-</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
