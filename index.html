@@ -248,42 +248,50 @@
           <h2 class="uppercase text-center mb-5"><span class="gold">Предстоящие</span> Мероприятия</h2>
           <table class="table table-hover mb-5">
               <thead>
-              <tr >
+              <tr>
                   <th scope="col">Дата</th>
                   <th scope="col">Спектакль</th>
                   <th scope="col">Время</th>
-                  <th scope="col">Детский</th>
                   <th scope="col">Взрослый</th>
+                  <th scope="col">Действие</th>
               </tr>
               </thead>
               <tbody>
               <tr id="event1">
-                  <td>25 Сентябрь</td>
-                  <td>Шамши</td>
-                  <td>19:00</td>
-                  <td>1500</td>
-                  <td>2000</td>
+                  <td class="date">25 Сентябрь</td>
+                  <td class="name">Шамши</td>
+                  <td class="time">19:00</td>
+                  <td class="price">1500</td>
+                  <td>
+                      <button onclick="buyTicket('event1')">Купить</button> <!-- Кнопка Купить -->
+                  </td>
               </tr>
               <tr id="event2">
-                  <td>27 Сентябрь</td>
-                  <td>Кеш</td>
-                  <td>19:00</td>
-                  <td>1200</td>
-                  <td>3000</td>
+                  <td class="date">27 Сентябрь</td>
+                  <td class="name">Кеш</td>
+                  <td class="time">19:00</td>
+                  <td class="price">1600</td>
+                  <td>
+                      <button onclick="buyTicket('event2')">Купить</button> <!-- Кнопка Купить -->
+                  </td>
               </tr>
               <tr id="event3">
-                  <td>29 Сентябрь</td>
-                  <td>Гаухартас</td>
-                  <td>19:00</td>
-                  <td>1300</td>
-                  <td>2500</td>
+                  <td class="date">29 Сентябрь</td>
+                  <td class="name">Шамши</td>
+                  <td class="time">19:00</td>
+                  <td class="price">1400</td>
+                  <td>
+                      <button onclick="buyTicket('event3')">Купить</button> <!-- Кнопка Купить -->
+                  </td>
               </tr>
               <tr id="event4">
-                  <td>1 Октябрь</td>
-                  <td>Гашык</td>
-                  <td>19:00</td>
-                  <td>1500</td>
-                  <td>2300</td>
+                  <td class="date">1 Октябрь</td>
+                  <td class="name">Шамши</td>
+                  <td class="time">19:00</td>
+                  <td class="price">1200</td>
+                  <td>
+                      <button onclick="buyTicket('event4')">Купить</button> <!-- Кнопка Купить -->
+                  </td>
               </tr>
               </tbody>
           </table>
