@@ -180,6 +180,7 @@
                   </ul>
 
                   <!-- Модальное окно корзины -->
+                  <div id="cartContentsIndex">
                   <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                           <div class="modal-content">
@@ -200,7 +201,7 @@
                           </div>
                       </div>
                   </div>
-
+                </div>
                   <!-- Модальное окно оформления заказа -->
                   <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
@@ -345,16 +346,17 @@
           window.location.href = "buyticket.html?event=event1";
       });
       document.getElementById("event2").addEventListener("click", function() {
-          window.location.href = "buyticket.html?event=event1";
+          window.location.href = "buyticket.html?event=event2";
       });
       document.getElementById("event3").addEventListener("click", function() {
-          window.location.href = "buyticket.html?event=event1";
+          window.location.href = "buyticket.html?event=event3";
       });
       document.getElementById("event4").addEventListener("click", function() {
-          window.location.href = "buyticket.html?event=event1";
+          window.location.href = "buyticket.html?event=event4";
       });
 
       // Add similar event listeners for other rows
+      
   </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -386,5 +388,20 @@
       });
 
   </script>
+
+<script>
+    function updateCartContents() {
+        const cartContents = document.getElementById('cartContents');
+        const storedSeats = JSON.parse(localStorage.getItem('cartSeats')) || [];
+
+        if (storedSeats.length) {
+            cartContents.innerHTML = `Выбранные места: ${storedSeats.join(', ')}`;
+        } else {
+            cartContents.innerHTML = 'Корзина пуста';
+        }
+    }
+
+    updateCartContents();
+</script>
   </body>
 </html>
